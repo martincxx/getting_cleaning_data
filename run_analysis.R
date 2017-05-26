@@ -26,17 +26,14 @@ require("data.table")
 require("reshape2")
 
 
-
 # Load: activity labels
 
 activity_labels <- read.table("./UCI HAR Dataset/activity_labels.txt")[,2]
 
 
-
 # Load: data column names
 
 features <- read.table("./UCI HAR Dataset/features.txt")[,2]
-
 
 
 # Extract only the measurements on the mean and standard deviation for each measurement.
@@ -135,5 +132,5 @@ melt_data      = melt(data, id = id_labels, measure.vars = data_labels)
 
 tidy_data   = dcast(melt_data, subject + Activity_Label ~ variable, mean)
 
-
+#Create the final (tidy dataset)
 write.table(tidy_data, file = "./tidy_data.txt")
